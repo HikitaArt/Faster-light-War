@@ -1,6 +1,23 @@
+body{
+    margin: 0px;
+
+}
 .game{
-    width: 500px;
+    display: flex;
+    width: 650px;
     height: 700px;
-    background-color: black;
-    margin: auto;
+    background-color:darkgray;
+    margin: 10px auto;
+}
+.score{
+    width: 150px;
+    text-align: center;
+    margin-top: 100px;
+    font-size: 26px;
+}
+.restart{
+    width: 130px;
+    height: 50px;
+    margin: 500px 10px;
+    font-size: 20px;
 }

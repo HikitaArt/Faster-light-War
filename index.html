@@ -4,11 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css" type="text/css"/> 
-    <title>Document</title>
+    <title>Fastest Light War</title>
 </head> 
 <body> 
-    <div class="game"><canvas width="500" height="700"></canvas></div>
-    <div class="score">score: 0</div>
+    <div class="game">
+        <canvas width="500" height="700"></canvas>
+        <div class="container">
+            <div class="score">score: 0</div>
+            <button class="restart" onclick="location.reload()">restart</button>
+        </div>
+    </div>
     <script src="script.js"></script> 
 </body>
 </html>

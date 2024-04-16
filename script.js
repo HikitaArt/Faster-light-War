@@ -21,9 +21,12 @@ class Enemy{
     destroy(){
         listOfEnemies.splice(listOfEnemies.indexOf(this),1);
     }
-    checkLose(rect){
+    checkLose(rect, ctx){
         if(this.y >= rect.bottom-100){
             clearInterval(frameUpdate);
+            ctx.fillStyle = "red";
+            ctx.fillText("GAME OVER", 135, 200);
+            ctx.fillStyle = "white";
         }
     }
 }
@@ -68,11 +71,18 @@ function clearScreen(context, canvas){
     context.fillRect(0, 0, canvas.width, canvas.height);
     context.fillStyle = "white";
 }
+function changeScore(score){
+    divScore.textContent = "score: " + score;
+}
+
+let divScore = document.getElementsByClassName("score")[0];
+let score = 0;
 
 let canvas = document.getElementsByTagName("canvas")[0];
 let ctx = canvas.getContext("2d");
 let screen = canvas.getBoundingClientRect();
 ctx.fillStyle = "white";
+ctx.font = "bold 36px Arial";
 
 let listOfBullets = new Array();
 let listOfEnemies = new Array();
@@ -93,7 +103,7 @@ const frameUpdate = setInterval(function(){
     listOfEnemies.forEach(function(enemy){
         enemy.move(ctx);
         enemy.drawEnemy(ctx);
-        enemy.checkLose(screen);
+        enemy.checkLose(screen, ctx);
     });
     listOfBullets.forEach(function(bullet){
         bullet.move();
@@ -106,6 +116,8 @@ const frameUpdate = setInterval(function(){
             if ((bulletX+bullet.width >= enemyX && bulletX <= enemyX+enemy.width) && (bulletY<=enemyY)){
                 bullet.destroy();
                 enemy.destroy();
+                score++;
+                changeScore(score);
             }
         });
         if (bullet.getY() < screen.top-20){
