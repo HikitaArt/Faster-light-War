@@ -55,12 +55,15 @@ class Bullet{
     }
 }
 function shipDraw(x, context){
-    context.beginPath();
+    /*context.beginPath();
     context.moveTo(x-15,690);
     context.lineTo(x,655);
     context.lineTo(15+x,690);
     context.closePath();
-    context.fill();
+    context.fill();*/
+    let img = new Image();
+    img.src = "sprites/ship.png"
+    context.drawImage(img, x-15, 655);
 }
 function shipMove(event, rect){
     let x = event.clientX - rect.left;
