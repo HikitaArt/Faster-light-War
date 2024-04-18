@@ -10,7 +10,10 @@ class Enemy{
         this.y +=this.speed;
     }
     drawEnemy(context){
-        context.fillRect(this.x,this.y,this.width,this.height);
+        //context.fillRect(this.x,this.y,this.width,this.height);
+        let img = new Image();
+        img.src = "sprites/enemyShip.png"
+        context.drawImage(img, this.x,this.y);
     }
     getX(){
         return this.x;
@@ -116,7 +119,7 @@ const frameUpdate = setInterval(function(){
             let enemyX = enemy.getX();
             let enemyY = enemy.getY()
             //нарушаю инкапсуляцию
-            if ((bulletX+bullet.width >= enemyX && bulletX <= enemyX+enemy.width) && (bulletY<=enemyY)){
+            if ((bulletX+bullet.width >= enemyX && bulletX <= enemyX+enemy.width) && (bulletY<=enemyY+40)){
                 bullet.destroy();
                 enemy.destroy();
                 score++;
